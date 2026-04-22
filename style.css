@@ -4,7 +4,7 @@
 }
 
 body{
-    background-color: #f2f2f2;
+    background-color: #BFC6C4;
 }
 
 header {
@@ -15,6 +15,7 @@ header {
     max-width: 1400px;
     margin: 0 auto;
     border-bottom: 1px solid #cccccc;
+    background-color: #FFFFFF;
 }
 
 h1{
@@ -55,29 +56,48 @@ nav a:hover {
     min-height: 400px;
     padding: 20px 100px;
     max-width: 1400px;
-    margin: 0 auto;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 100px;
 }
 
 .gmx870 {
-    position: absolute;
-    top: 20px;
-    left: 110px;
     background-color: black;
     width: 300px;
-    height: auto;
+    height: 300px;
 }
 
 .gmx870:hover {
-    transform: scale(1.05);
+    transform: scale(1.1);
     transition: transform 0.3s ease;
     cursor: pointer;
 }
 
 .R7 {
-    position: absolute;
-    top: 20px;
-    right: 110px;
+    width: 300px;
+    height: 300px;
+    top: 50px;
+    left: 50px;
+    background-color: black;
+}
+
+.R7:hover {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.keyboard {
     background-color: black;
     width: 300px;
-    height: auto;
+    height: 300px;
 }
+
+.keyboard:hover {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+

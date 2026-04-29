@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <link rel="stylesheet" href="design.css">
+    <link rel="stylesheet" href="Register.css">
     <title>Login and sign up form</title>
     <link rel ="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
 </head>
@@ -11,15 +11,17 @@
     <div class="wrapper">
         <h1>Sign up</h1>
         <form action="#">
-            <input type="text" placeholder="Username">   
-            <input type="text" placeholder="Name"> 
-            <input type="password" placeholder="Password"> 
-            <input type="password" placeholder="Re-Enter Password">       
+            <div class="input-field">
+                <ul><p>Email:</p><input type="text" placeholder="Email"></ul>
+                <ul><p>Username:</p><input type="text" placeholder="Username"></ul>
+                <ul><p>Password:</p><input type="password" placeholder="Password"></ul>
+                <ul class="final"><p>Re-Enter Password:</p><input type="password" placeholder="Re-Enter Password"></ul>
+            </div>
         </form>
 
         <div class="terms">
         <input type="checkbox" id="checkbox">
-        <label for="checkbox">I agree to these<a href="#"> Term & Conditions</a></label>
+        <label for="checkbox" class="checkbox">I agree to these<a href="#"> Term & Conditions</a></label>
         </div> 
 
         <button>Sign up </button>

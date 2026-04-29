@@ -1,0 +1,36 @@
+@font-face {
+    font-family: 'Orbitron';
+    src: url('assets/fonts/Orbitron-VariableFont_wght.ttf') format('truetype');
+}
+ul{
+    padding-bottom: 0;
+    text-align: left;
+    padding-left: 0;
+}
+.final{
+    margin-bottom: 0.5in;
+}
+div{
+    display: block;
+    unicode-bidi: isolate;
+}
+
+h1{
+    background-color:#BFC6C4;
+    width: 100%;
+    height: 33px;
+    top: 56px;
+}
+
+input{
+    display: flex;
+    flex-direction: coloumn;
+}
+
+.checkbox{
+    padding-left:10px;
+}
+.terms{
+    display:flex;
+    flex-direction: row;
+}

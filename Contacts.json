@@ -1,0 +1,25 @@
+{
+  "company": {
+    "name": "NanoNexus",
+    "email": "nanonexus.example@gmail.com",
+    "phone": "+63-912-345-6789"
+  },
+  "team": [
+    {
+      "id": "t1",
+      "name": "Alyssa Cruz",
+      "role": "Customer Support Lead",
+      "email": "alyssa.cruz@gmail.com",
+      "phone": "+63-912-111-2222",
+      "bio": "Handles customer inquiries and order support."
+    },
+    {
+      "id": "t2",
+      "name": "Miguel Santos",
+      "role": "Sales & Partnerships",
+      "email": "miguel.santos@gmail.com",
+      "phone": "+63-912-333-4444",
+      "bio": "Manages B2B partnerships and wholesale orders."
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>NanoNexus — Contacts</title>
+  <link rel="stylesheet" href="contacts.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">
+      <h1>NanoNexus</h1>
+    </div>
+
+    <nav class="main-nav">
+      <a href="NanoNexus.html">Home</a>
+      <a href="Contacts.html" class="active">Contact</a>
+      <a href="portfolio.html">About us</a>
+      <a href="sign up.html">Sign up</a>
+    </nav>
+
+    <input type="search" placeholder="Search for Something?" class="search-bar" />
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h2>Contact Us</h2>
+      <p class="lead">Questions about products, orders, or partnerships? Reach out — we're here to help.</p>
+    </section>
+
+    <section class="contact-grid" id="contact-grid" aria-live="polite">
+      <!-- Contact cards injected by contacts.js -->
+    </section>
+
+    <section class="contact-form-section">
+      <h3>Send us a quick message</h3>
+      <form id="contact-form" class="contact-form" action="#" onsubmit="handleFormSubmit(event)" novalidate>
+        <label>
+          <span>Name</span>
+          <input type="text" id="name" required />
+        </label>
+
+        <label>
+          <span>Your Email (must be Gmail)</span>
+          <input type="email" id="email" placeholder="you@gmail.com" required />
+        </label>
+
+        <label>
+          <span>Message</span>
+          <textarea id="message" rows="5" required></textarea>
+        </label>
+
+        <div class="form-actions">
+          <button type="submit" class="btn-primary">Send Message</button>
+          <button type="reset" class="btn-secondary">Reset</button>
+        </div>
+
+        <p id="form-status" class="form-status" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; <span id="year"></span> NanoNexus. All rights reserved.</p>
+  </footer>
+
+  <script src="contacts.js"></script>
+</body>
+</html>

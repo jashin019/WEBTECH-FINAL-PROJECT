@@ -1,40 +1,464 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>NanoNexus</title>
-    <link rel="stylesheet" href="Homepage.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>NanoNexus — Computer Parts & Tech Accessories</title>
+  <style>
+    :root{
+      --accent:#0ea5a4;
+      --bg:#0f172a;
+      --card:#0b1220;
+      --muted:#94a3b8;
+      --glass: rgba(255,255,255,0.03);
+      --max-width:1200px;
+      --gap:16px;
+      font-family: Inter, system-ui, Arial, sans-serif;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      background:linear-gradient(180deg,#071029 0%, #071a2a 100%);
+      color:#e6eef6;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+    .site-header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding:12px 20px;
+      max-width:var(--max-width);
+      margin:0 auto;
+    }
+    .brand h1{margin:0; font-size:1.4rem; color:var(--accent)}
+    .main-nav a{
+      color:var(--muted);
+      text-decoration:none;
+      margin:0 8px;
+      font-weight:600;
+    }
+    .header-actions{display:flex;align-items:center;gap:10px}
+    .search-bar{
+      padding:8px 12px;
+      border-radius:8px;
+      border:1px solid rgba(255,255,255,0.06);
+      background:var(--glass);
+      color:inherit;
+      min-width:200px;
+    }
+    .cart-btn{
+      background:linear-gradient(90deg,var(--accent),#06b6d4);
+      border:none;
+      color:#021018;
+      padding:8px 12px;
+      border-radius:10px;
+      cursor:pointer;
+      display:flex;
+      align-items:center;
+      gap:8px;
+      font-weight:700;
+    }
+    .cart-count{
+      background:#021018;
+      color:var(--accent);
+      padding:2px 6px;
+      border-radius:999px;
+      font-size:0.85rem;
+    }
+    .hero{
+      max-width:var(--max-width);
+      margin:20px auto;
+      padding:20px;
+      text-align:left;
+    }
+    .hero h2{margin:0 0 6px 0}
+    .hero p{margin:0;color:var(--muted)}
+    .product-grid{
+      max-width:var(--max-width);
+      margin:12px auto 80px;
+      display:grid;
+      grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+      gap:var(--gap);
+      padding:0 20px;
+    }
+    .product-card{
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:12px;
+      padding:12px;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      align-items:center;
+      transition:transform .18s ease, box-shadow .18s ease;
+      border:1px solid rgba(255,255,255,0.03);
+    }
+    .product-card:hover{transform:translateY(-6px); box-shadow:0 8px 30px rgba(2,6,23,0.6)}
+    .product-image{
+      width:100%;
+      height:140px;
+      object-fit:contain;
+      background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));
+      border-radius:8px;
+      padding:8px;
+    }
+    .product-name{font-weight:700; font-size:0.98rem; text-align:center}
+    .product-price{color:var(--accent); font-weight:800; font-size:1.05rem}
+    .card-actions{
+      display:flex;
+      gap:8px;
+      width:100%;
+      justify-content:center;
+    }
+    .add-btn{
+      background:var(--accent);
+      color:#021018;
+      border:none;
+      padding:8px 12px;
+      border-radius:8px;
+      cursor:pointer;
+      font-weight:700;
+    }
+    .view-btn{
+      background:transparent;
+      color:var(--muted);
+      border:1px solid rgba(255,255,255,0.04);
+      padding:8px 12px;
+      border-radius:8px;
+      cursor:pointer;
+    }
+    /* Cart modal */
+    .cart-modal{display:none; position:fixed; inset:0; z-index:60}
+    .cart-modal[aria-hidden="false"]{display:block}
+    .cart-backdrop{
+      position:fixed; inset:0; background:rgba(0,0,0,0.6);
+    }
+    .cart-panel{
+      position:fixed; right:20px; top:60px; width:360px; max-width:calc(100% - 40px);
+      background:#071428; border-radius:12px; padding:16px; z-index:80;
+      box-shadow:0 10px 40px rgba(0,0,0,0.6);
+    }
+    .close-cart{background:transparent;border:none;color:var(--muted);float:right;font-size:1.1rem;cursor:pointer}
+    .cart-items{max-height:320px; overflow:auto; margin-top:8px; display:flex; flex-direction:column; gap:10px}
+    .cart-item{display:flex; gap:10px; align-items:center; padding:8px; border-radius:8px; background:rgba(255,255,255,0.01)}
+    .cart-item img{width:56px; height:56px; object-fit:contain; border-radius:6px}
+    .cart-item .meta{flex:1}
+    .qty-controls{display:flex; gap:6px; align-items:center}
+    .qty-controls button{padding:4px 8px; border-radius:6px; border:none; background:rgba(255,255,255,0.03); color:var(--muted); cursor:pointer}
+    .cart-footer{display:flex; justify-content:space-between; align-items:center; margin-top:12px}
+    .checkout-btn{background:linear-gradient(90deg,#06b6d4,#0ea5a4); border:none; padding:10px 14px; border-radius:8px; color:#021018; font-weight:800; cursor:pointer}
+    /* Product detail modal */
+    .detail-modal{display:none; position:fixed; inset:0; z-index:70}
+    .detail-modal[aria-hidden="false"]{display:block}
+    .detail-backdrop{position:fixed; inset:0; background:rgba(0,0,0,0.6)}
+    .detail-panel{
+      position:fixed; left:50%; top:50%; transform:translate(-50%,-50%);
+      width:90%; max-width:720px; background:#071428; border-radius:12px; padding:18px; z-index:80;
+      box-shadow:0 10px 40px rgba(0,0,0,0.6);
+    }
+    .close-detail{background:transparent;border:none;color:var(--muted);float:right;font-size:1.1rem;cursor:pointer}
+    .detail-content{display:flex; gap:16px; align-items:flex-start}
+    .detail-content img{width:220px; height:160px; object-fit:contain; border-radius:8px}
+    .detail-meta{flex:1}
+    .detail-meta h4{margin:0 0 6px 0}
+    .detail-meta p{margin:6px 0; color:var(--muted)}
+    /* Toast */
+    .toast{
+      position:fixed; right:20px; bottom:20px; background:var(--accent); color:#021018; padding:10px 14px; border-radius:8px; z-index:9999;
+    }
+    @media (max-width:640px){
+      .site-header{flex-direction:column; align-items:flex-start; gap:10px}
+      .header-actions{width:100%; justify-content:space-between}
+      .product-image{height:120px}
+      .detail-content{flex-direction:column; align-items:center}
+      .detail-content img{width:80%; height:auto}
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>NanoNexus</h1>
-        
-            <nav>
-                <a href="NanoNexus.html">Home</a>
-                <a href="#">Contact</a>
-                <a href="portfolio.html">About us</a>
-                <a href="sign up.html">Sign up</a>
-            </nav>
-
-            <input type="search" placeholder="Search for Something?" class="search-bar">
-    </header>
-
-    <div class="showcase">
-        
-        <img src="assets/images/1.png" class="keyboard">
-        <img src="assets/images/2.png" class="mouse">
-        <img src="assets/images/3.png" class="gmx870">
-        <img src="assets/images/4.jpg" class="monitor">
-        <img src="assets/images/5.png" class="headset">
-        <img src="assets/images/6.png" class="chair">
-        <img src="assets/images/7.png" class="pc">
-        <img src="assets/images/8.jpg" class="laptop">
-        <img src="assets/images/9.jpg" class="R7">
-        <img src="assets/images/10.jpg" class="RTX4060">
-
-    
-
-   
-
+  <header class="site-header">
+    <div class="brand">
+      <h1>NanoNexus</h1>
     </div>
+
+    <nav class="main-nav">
+      <a href="NanoNexus.html">Home</a>
+      <a href="Contacts.html">Contact</a>
+      <a href="portfolio.html">About us</a>
+      <a href="sign up.html">Sign up</a>
+    </nav>
+
+    <div class="header-actions">
+      <input type="search" placeholder="Search for computer parts or accessories..." class="search-bar" id="searchInput" />
+      <button id="cartBtn" class="cart-btn" aria-label="Open cart">
+        🛒 <span id="cartCount" class="cart-count">0</span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h2>Featured Computer Parts & Tech Accessories</h2>
+      <p>Motherboards, GPUs, peripherals, and accessories for every build.</p>
+    </section>
+
+    <section id="products" class="product-grid" aria-live="polite">
+      <!-- Product cards injected by JS -->
+    </section>
+  </main>
+
+  <!-- Cart Modal -->
+  <div id="cartModal" class="cart-modal" aria-hidden="true">
+    <div class="cart-panel" role="dialog" aria-label="Shopping cart">
+      <button id="closeCart" class="close-cart" aria-label="Close cart">✕</button>
+      <h3>Your Cart</h3>
+      <div id="cartItems" class="cart-items"></div>
+      <div class="cart-footer">
+        <div class="cart-total">Total: ₱<span id="cartTotal">0.00</span></div>
+        <button id="checkoutBtn" class="checkout-btn">Checkout</button>
+      </div>
+    </div>
+    <div class="cart-backdrop" id="cartBackdrop"></div>
+  </div>
+
+  <!-- Product Detail Modal -->
+  <div id="detailModal" class="detail-modal" aria-hidden="true">
+    <div class="detail-panel" role="dialog" aria-label="Product details">
+      <button id="closeDetail" class="close-detail" aria-label="Close details">✕</button>
+      <div id="detailContent" class="detail-content">
+        <!-- Filled by JS -->
+      </div>
+    </div>
+    <div class="detail-backdrop" id="detailBackdrop"></div>
+  </div>
+
+  <script>
+    // Elements
+    const productsContainer = document.getElementById('products');
+    const cartCountEl = document.getElementById('cartCount');
+    const cartBtn = document.getElementById('cartBtn');
+    const cartModal = document.getElementById('cartModal');
+    const cartItemsEl = document.getElementById('cartItems');
+    const cartTotalEl = document.getElementById('cartTotal');
+    const closeCart = document.getElementById('closeCart');
+    const cartBackdrop = document.getElementById('cartBackdrop');
+
+    const detailModal = document.getElementById('detailModal');
+    const detailContent = document.getElementById('detailContent');
+    const closeDetail = document.getElementById('closeDetail');
+    const detailBackdrop = document.getElementById('detailBackdrop');
+
+    const searchInput = document.getElementById('searchInput');
+
+    // Products data (computer parts & tech accessories)
+    let products = [
+      {"id":"p1","name":"RGB Mechanical Keyboard","price":3499.00,"image":"assets/images/1.png","description":"Tactile switches, full RGB, detachable wrist rest."},
+      {"id":"p2","name":"T-Force Delta RAM 16GB","price":2199.00,"image":"assets/images/2.png","description":"High-speed DDR4 RGB memory module."},
+      {"id":"p3","name":"Gigabyte X870 Motherboard","price":8999.00,"image":"assets/images/3.png","description":"AM5 socket, PCIe 5.0, WiFi 6E."},
+      {"id":"p4","name":"Wireless RGB Headset","price":2599.00,"image":"assets/images/4.jpg","description":"Surround sound, noise-cancelling mic."},
+      {"id":"p5","name":"Gaming Mouse","price":1299.00,"image":"assets/images/5.png","description":"High-DPI sensor, programmable buttons."},
+      {"id":"p6","name":"JBL Speakers","price":1999.00,"image":"assets/images/9.jpg","description":"Compact stereo speakers with rich bass."},
+      {"id":"p7","name":"Ergonomic Gaming Chair","price":7999.00,"image":"assets/images/6.png","description":"Adjustable lumbar support and recline."},
+      {"id":"p8","name":"RTX 4060 GPU","price":24999.00,"image":"assets/images/10.jpg","description":"Ray tracing, DLSS support."},
+      {"id":"p9","name":"High-Performance Laptop","price":59999.00,"image":"assets/images/8.jpg","description":"Portable workstation for gaming and content creation."},
+      {"id":"p10","name":"Laptop","price":58999.00,"image":"assets/images/7.png","description":"Portable."}
+    
+      ];
+
+    // Cart stored as { id: { id, name, price, image, qty } }
+    let cart = JSON.parse(localStorage.getItem('nanonexus_cart') || '{}');
+
+    // Utility: update cart count
+    function updateCartCount(){
+      const count = Object.values(cart).reduce((s, item) => s + item.qty, 0);
+      cartCountEl.textContent = count;
+    }
+
+    // Render products into the grid
+    function renderProducts(list){
+      productsContainer.innerHTML = '';
+      list.forEach(p => {
+        const card = document.createElement('article');
+        card.className = 'product-card';
+        card.innerHTML = `
+          <img class="product-image" src="${p.image}" alt="${p.name}" />
+          <div class="product-name">${p.name}</div>
+          <div class="product-price">₱${p.price.toFixed(2)}</div>
+          <div class="card-actions">
+            <button class="add-btn" data-id="${p.id}">Add to Cart</button>
+            <button class="view-btn" data-id="${p.id}">View</button>
+          </div>
+        `;
+        productsContainer.appendChild(card);
+      });
+
+      // attach handlers
+      document.querySelectorAll('.add-btn').forEach(btn => {
+        btn.addEventListener('click', () => addToCart(btn.dataset.id));
+      });
+
+      // attach view handlers
+      document.querySelectorAll('.view-btn').forEach(btn => {
+        btn.addEventListener('click', () => openProductDetail(btn.dataset.id));
+      });
+    }
+
+    // Add to cart logic
+    function addToCart(id){
+      const product = products.find(p => p.id === id);
+      if(!product) return;
+      if(!cart[id]) cart[id] = { id: product.id, name: product.name, price: product.price, image: product.image, qty: 0 };
+      cart[id].qty += 1;
+      localStorage.setItem('nanonexus_cart', JSON.stringify(cart));
+      updateCartCount();
+      showToast(`${product.name} added to cart`);
+    }
+
+    // Simple toast
+    function showToast(msg){
+      const t = document.createElement('div');
+      t.className = 'toast';
+      t.textContent = msg;
+      document.body.appendChild(t);
+      setTimeout(()=> t.remove(), 1600);
+    }
+
+    // Render cart modal items
+    function renderCart(){
+      cartItemsEl.innerHTML = '';
+      const entries = Object.values(cart);
+      if(entries.length === 0){
+        cartItemsEl.innerHTML = '<p style="color:var(--muted)">Your cart is empty.</p>';
+        cartTotalEl.textContent = '0.00';
+        return;
+      }
+      let total = 0;
+      entries.forEach(item => {
+        total += item.price * item.qty;
+        const div = document.createElement('div');
+        div.className = 'cart-item';
+        div.innerHTML = `
+          <img src="${item.image}" alt="${item.name}" />
+          <div class="meta">
+            <div style="font-weight:700">${item.name}</div>
+            <div style="color:var(--muted)">₱${item.price.toFixed(2)} each</div>
+          </div>
+          <div>
+            <div class="qty-controls">
+              <button class="dec" data-id="${item.id}">-</button>
+              <div style="padding:4px 8px">${item.qty}</div>
+              <button class="inc" data-id="${item.id}">+</button>
+            </div>
+          </div>
+        `;
+        cartItemsEl.appendChild(div);
+      });
+
+      // attach qty handlers
+      cartItemsEl.querySelectorAll('.inc').forEach(b => b.addEventListener('click', () => changeQty(b.dataset.id, 1)));
+      cartItemsEl.querySelectorAll('.dec').forEach(b => b.addEventListener('click', () => changeQty(b.dataset.id, -1)));
+
+      cartTotalEl.textContent = total.toFixed(2);
+    }
+
+    // change quantity
+    function changeQty(id, delta){
+      if(!cart[id]) return;
+      cart[id].qty += delta;
+      if(cart[id].qty <= 0) delete cart[id];
+      localStorage.setItem('nanonexus_cart', JSON.stringify(cart));
+      renderCart();
+      updateCartCount();
+    }
+
+    // open/close cart
+    cartBtn.addEventListener('click', () => {
+      cartModal.setAttribute('aria-hidden', 'false');
+      renderCart();
+    });
+    closeCart.addEventListener('click', () => cartModal.setAttribute('aria-hidden', 'true'));
+    cartBackdrop.addEventListener('click', () => cartModal.setAttribute('aria-hidden', 'true'));
+
+    // Product detail modal functions
+    function openProductDetail(id){
+      const p = products.find(x => x.id === id);
+      if(!p) return;
+      detailContent.innerHTML = `
+        <img src="${p.image}" alt="${p.name}" />
+        <div class="detail-meta">
+          <h4>${p.name}</h4>
+          <div style="color:var(--accent); font-weight:800">₱${p.price.toFixed(2)}</div>
+          <p>${p.description ? p.description : 'High quality product.'}</p>
+          <div style="margin-top:10px">
+            <button class="add-btn" data-id="${p.id}">Add to Cart</button>
+            <button class="view-link" id="openFullPage" style="margin-left:8px; padding:8px 12px; border-radius:8px; border:1px solid rgba(255,255,255,0.04); background:transparent; color:var(--muted); cursor:pointer;">Open Page</button>
+          </div>
+        </div>
+      `;
+      // attach add-to-cart inside modal
+      detailContent.querySelector('.add-btn').addEventListener('click', () => {
+        addToCart(p.id);
+        closeProductDetail();
+      });
+      // optional: Open a product page (placeholder behavior)
+      const openFullPage = document.getElementById('openFullPage');
+      openFullPage.addEventListener('click', () => {
+        // For now, just show an alert-like detail; you can replace with navigation to a product page.
+        alert(`${p.name}\n\nPrice: ₱${p.price.toFixed(2)}\n\n${p.description}`);
+      });
+
+      detailModal.setAttribute('aria-hidden','false');
+    }
+
+    function closeProductDetail(){
+      detailModal.setAttribute('aria-hidden','true');
+    }
+
+    closeDetail.addEventListener('click', closeProductDetail);
+    detailBackdrop.addEventListener('click', closeProductDetail);
+
+    // Search: filter products as user types
+    if (searchInput) {
+      searchInput.addEventListener('input', (e) => {
+        const q = e.target.value.trim().toLowerCase();
+        if (!q) {
+          renderProducts(products);
+          return;
+        }
+        const filtered = products.filter(p =>
+          p.name.toLowerCase().includes(q) ||
+          (p.description && p.description.toLowerCase().includes(q))
+        );
+        renderProducts(filtered);
+      });
+    }
+
+    // Checkout button (simple demo)
+    document.getElementById('checkoutBtn').addEventListener('click', () => {
+      const entries = Object.values(cart);
+      if(entries.length === 0){
+        showToast('Cart is empty');
+        return;
+      }
+      // For demo: show order summary and clear cart
+      let summary = 'Order summary:\\n';
+      let total = 0;
+      entries.forEach(it => { summary += `${it.name} x${it.qty} - ₱${(it.price*it.qty).toFixed(2)}\\n`; total += it.price*it.qty; });
+      summary += `\\nTotal: ₱${total.toFixed(2)}`;
+      if(confirm(summary + '\\n\\nPlace order (demo)?')){
+        cart = {};
+        localStorage.removeItem('nanonexus_cart');
+        updateCartCount();
+        renderCart();
+        cartModal.setAttribute('aria-hidden','true');
+        showToast('Order placed (demo).');
+      }
+    });
+
+    // init
+    renderProducts(products);
+    updateCartCount();
+  </script>
 </body>
 </html>

@@ -1,0 +1,349 @@
+/* Override body for portfolio page to give it a modern dark theme */
+body.portfolio-page {
+    background-color: #0b0f19;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    color: #f1f5f9;
+}
+
+/* Ensure the header still looks good or blend it. 
+   Homepage.css makes header white. We'll leave it as is so navigation is consistent,
+   but we'll push the portfolio wrapper down. */
+.portfolio-wrapper {
+    min-height: calc(100vh - 100px);
+    /* Adjust based on header height */
+    padding: 60px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: radial-gradient(circle at top right, #1e293b, #0b0f19);
+}
+
+.hero-section {
+    text-align: center;
+    margin-bottom: 60px;
+    max-width: 800px;
+}
+
+.hero-section .gradient-text {
+    font-size: 3.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #38bdf8, #818cf8, #c084fc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 20px;
+    font-family: 'Orbitron', sans-serif;
+    /* Link to NanoNexus theme */
+}
+
+.hero-section p {
+    font-size: 1.2rem;
+    color: #94a3b8;
+    line-height: 1.6;
+}
+
+/* Grid Layout for 5 members */
+.team-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    max-width: 1200px;
+    width: 100%;
+}
+
+/* Glassmorphism Cards */
+.member-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 30px;
+    width: 320px;
+    text-align: center;
+    transition: all 0.4s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.member-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.member-card:hover {
+    transform: translateY(-10px);
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(56, 189, 248, 0.2);
+    border: 1px solid rgba(56, 189, 248, 0.3);
+}
+
+/* Prevent image hover scaling from Homepage.css from breaking the card */
+.member-card img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 20px auto;
+    border: 4px solid #1e293b;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    background-color: transparent;
+    transition: all 0.3s ease;
+    top: auto;
+    left: auto;
+    display: block;
+    /* Override any inline styling from old CSS */
+}
+
+.member-card:hover img {
+    transform: scale(1.05);
+    border-color: #38bdf8;
+}
+
+.member-card h3 {
+    margin: 0 0 5px 0;
+    font-size: 1.5rem;
+    color: #f8fafc;
+}
+
+.member-card h4 {
+    margin: 0 0 15px 0;
+    font-size: 1rem;
+    color: #38bdf8;
+    font-weight: 400;
+}
+
+.member-card p {
+    font-size: 0.95rem;
+    color: #cbd5e1;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.view-more-btn {
+    background: transparent;
+    border: 1px solid #38bdf8;
+    color: #38bdf8;
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.member-card:hover .view-more-btn {
+    background: #38bdf8;
+    color: #0b0f19;
+}
+
+/* Modal Styling */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(11, 15, 25, 0.8);
+    backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-content {
+    background: #1e293b;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    width: 90%;
+    max-width: 800px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+}
+
+.modal-overlay.active .modal-content {
+    transform: scale(1);
+}
+
+.close-modal {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: transparent;
+    border: none;
+    color: #94a3b8;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: color 0.3s;
+    z-index: 10;
+}
+
+.close-modal:hover {
+    color: #ef4444;
+}
+
+.modal-body {
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+}
+
+@media (min-width: 768px) {
+    .modal-body {
+        flex-direction: row;
+        gap: 40px;
+    }
+}
+
+.modal-left {
+    flex: 1;
+    text-align: center;
+}
+
+/* Modal Image Override Homepage.css */
+.modal-left img {
+    width: 250px;
+    height: 250px;
+    border-radius: 20px;
+    object-fit: cover;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    margin-bottom: 20px;
+    top: auto;
+    left: auto;
+    display: inline-block;
+}
+
+.modal-left img:hover {
+    transform: none;
+    cursor: default;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.social-links a {
+    color: #94a3b8;
+    font-size: 1.5rem;
+    transition: color 0.3s, transform 0.3s;
+    text-decoration: none;
+}
+
+.social-links a:hover {
+    color: #38bdf8;
+    transform: translateY(-3px);
+}
+
+.modal-right {
+    flex: 2;
+}
+
+.modal-right h3 {
+    font-size: 2.5rem;
+    margin: 0 0 5px 0;
+    color: #f8fafc;
+}
+
+.modal-right h4 {
+    font-size: 1.2rem;
+    color: #38bdf8;
+    margin: 0 0 20px 0;
+    font-weight: 400;
+}
+
+.modal-right p {
+    color: #cbd5e1;
+    line-height: 1.8;
+    margin-bottom: 25px;
+}
+
+.skills-section h5 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    color: #f8fafc;
+}
+
+.skill-bar {
+    margin-bottom: 15px;
+}
+
+.skill-name {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+    color: #cbd5e1;
+}
+
+.skill-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    height: 10px;
+    overflow: hidden;
+}
+
+.skill-fill {
+    background: linear-gradient(90deg, #38bdf8, #818cf8);
+    height: 100%;
+    border-radius: 10px;
+    width: 0;
+    /* Animated in JS */
+    transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Custom Scrollbar for Modal */
+.modal-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+    background: #1e293b;
+    border-radius: 0 20px 20px 0;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+    background: #475569;
+    border-radius: 4px;
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover {
+    background: #64748b;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        padding: 20px;
+        gap: 20px;
+    }
+
+    .search-bar {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .team-grid {
+        gap: 20px;
+    }
+}

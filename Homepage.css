@@ -3,7 +3,7 @@
     src: url('assets/fonts/Orbitron-VariableFont_wght.ttf') format('truetype');
 }
 
-body{
+body {
     background-color: #BFC6C4;
 }
 
@@ -11,29 +11,29 @@ header {
     display: flex;
     flex-wrap: nowrap;
     align-items: center;
-    align-content:space-between;
-    gap: 50px;
+    justify-content: space-between;
     padding: 20px 100px;
-    max-width: 1400px auto;
-    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0;
     position: relative;
     border-bottom: 1px solid #cccccc;
     background-color: #FFFFFF;
 }
 
-h1{
+h1 {
     color: #333333;
     margin: 0;
     font-family: 'Orbitron', sans-serif;
 }
 
-nav{
+nav {
     display: flex;
     position: sticky;
     gap: 30px;
     font-size: 20px;
     user-select: none;
-    
+
 }
 
 nav a {
@@ -53,7 +53,12 @@ nav a:hover {
     border: 1px solid #999;
     border-radius: 4px;
     width: 270px;
-    margin-left: 250px;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
 }
 
 .showcase {
@@ -63,12 +68,12 @@ nav a:hover {
     max-width: 1400px;
     margin: auto;
     display: grid;
-    grid-template-columns:repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     align-items: center;
     gap: 100px;
 }
 
-img{
+img {
     width: 300px;
     height: 300px;
     top: 50px;
@@ -81,4 +86,56 @@ img:hover {
     transition: transform 0.3s ease;
     cursor: pointer;
 
+}
+
+
+.main-footer {
+    background-color: #0b0f19;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 30px 100px;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 40px;
+    color: #94a3b8;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.footer-content p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+.footer-links {
+    display: flex;
+    gap: 20px;
+}
+
+.footer-links a {
+    color: #94a3b8;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: #38bdf8;
+}
+
+@media (max-width: 768px) {
+    .main-footer {
+        padding: 20px;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
 }

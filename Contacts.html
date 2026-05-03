@@ -1,25 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>NanoNexus — Contacts</title>
+  <link rel="stylesheet" href="Homepage.css">
+  <link rel="stylesheet" href="portfolio.css">
   <link rel="stylesheet" href="contacts.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
-<body>
-  <header class="site-header">
-    <div class="brand">
-      <h1>NanoNexus</h1>
-    </div>
 
-    <nav class="main-nav">
+<body class="portfolio-page">
+  <header>
+    <h1>NanoNexus</h1>
+    <nav>
       <a href="NanoNexus.html">Home</a>
-      <a href="Contacts.html" class="active">Contact</a>
+      <a href="Contacts.html">Contact</a>
       <a href="portfolio.html">About us</a>
       <a href="sign up.html">Sign up</a>
     </nav>
-
-    <input type="search" placeholder="Search for Something?" class="search-bar" />
+    <div class="header-actions">
+      <input type="search" placeholder="Search for Something?" class="search-bar" />
+    </div>
   </header>
 
   <main class="container">
@@ -29,7 +32,7 @@
     </section>
 
     <section class="contact-grid" id="contact-grid" aria-live="polite">
-      <!-- Contact cards injected by contacts.js -->
+
     </section>
 
     <section class="contact-form-section">
@@ -60,10 +63,17 @@
     </section>
   </main>
 
-  <footer class="site-footer">
-    <p>&copy; <span id="year"></span> NanoNexus. All rights reserved.</p>
+  <footer class="main-footer">
+    <div class="footer-content">
+      <p>&copy; 2026 NanoNexus. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
+    </div>
   </footer>
 
   <script src="contacts.js"></script>
 </body>
+
 </html>

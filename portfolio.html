@@ -16,11 +16,13 @@
         <h1>NanoNexus</h1>
         <nav>
             <a href="NanoNexus.html">Home</a>
-            <a href="#">Contact</a>
+            <a href="Contacts.html">Contact</a>
             <a href="portfolio.html">About us</a>
             <a href="sign up.html">Sign up</a>
         </nav>
-        <input type="search" placeholder="Search for Something?" class="search-bar">
+        <div class="header-actions">
+            <input type="search" placeholder="Search for Something?" class="search-bar">
+        </div>
     </header>
 
     <main class="portfolio-wrapper">
@@ -31,19 +33,29 @@
         </section>
 
         <section class="team-grid" id="teamGrid">
-            <!-- JavaScript will inject team member cards here -->
+
         </section>
     </main>
 
-    <!-- Modal for Detailed View -->
+
     <div class="modal-overlay" id="memberModal">
         <div class="modal-content">
             <button class="close-modal" id="closeModal">&times;</button>
             <div class="modal-body" id="modalBody">
-                <!-- JavaScript will inject modal content here -->
+
             </div>
         </div>
     </div>
+
+    <footer class="main-footer">
+        <div class="footer-content">
+            <p>&copy; 2026 NanoNexus. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
 
     <script src="portfolio.js"></script>
 </body>

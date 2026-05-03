@@ -1,4 +1,3 @@
-/* Override body for portfolio page to give it a modern dark theme */
 body.portfolio-page {
     background-color: #0b0f19;
     margin: 0;
@@ -7,12 +6,10 @@ body.portfolio-page {
     color: #f1f5f9;
 }
 
-/* Ensure the header still looks good or blend it. 
-   Homepage.css makes header white. We'll leave it as is so navigation is consistent,
-   but we'll push the portfolio wrapper down. */
+
 .portfolio-wrapper {
     min-height: calc(100vh - 100px);
-    /* Adjust based on header height */
+
     padding: 60px 20px;
     display: flex;
     flex-direction: column;
@@ -34,7 +31,7 @@ body.portfolio-page {
     -webkit-text-fill-color: transparent;
     margin-bottom: 20px;
     font-family: 'Orbitron', sans-serif;
-    /* Link to NanoNexus theme */
+
 }
 
 .hero-section p {
@@ -43,7 +40,7 @@ body.portfolio-page {
     line-height: 1.6;
 }
 
-/* Grid Layout for 5 members */
+
 .team-grid {
     display: flex;
     flex-wrap: wrap;
@@ -53,7 +50,7 @@ body.portfolio-page {
     width: 100%;
 }
 
-/* Glassmorphism Cards */
+
 .member-card {
     background: rgba(255, 255, 255, 0.03);
     backdrop-filter: blur(10px);
@@ -83,7 +80,7 @@ body.portfolio-page {
     border: 1px solid rgba(56, 189, 248, 0.3);
 }
 
-/* Prevent image hover scaling from Homepage.css from breaking the card */
+
 .member-card img {
     width: 150px;
     height: 150px;
@@ -97,7 +94,7 @@ body.portfolio-page {
     top: auto;
     left: auto;
     display: block;
-    /* Override any inline styling from old CSS */
+
 }
 
 .member-card:hover img {
@@ -141,7 +138,7 @@ body.portfolio-page {
     color: #0b0f19;
 }
 
-/* Modal Styling */
+
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -217,7 +214,7 @@ body.portfolio-page {
     text-align: center;
 }
 
-/* Modal Image Override Homepage.css */
+
 .modal-left img {
     width: 250px;
     height: 250px;
@@ -307,11 +304,11 @@ body.portfolio-page {
     height: 100%;
     border-radius: 10px;
     width: 0;
-    /* Animated in JS */
+
     transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Custom Scrollbar for Modal */
+
 .modal-content::-webkit-scrollbar {
     width: 8px;
 }
@@ -330,7 +327,7 @@ body.portfolio-page {
     background: #64748b;
 }
 
-/* Responsive adjustments */
+
 @media (max-width: 768px) {
     header {
         flex-direction: column;

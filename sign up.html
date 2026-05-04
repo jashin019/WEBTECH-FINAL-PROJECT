@@ -1,58 +1,240 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="Homepage.css">
-    <link rel="stylesheet" href="portfolio.css">
-    <link rel="stylesheet" href="Register.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <title>Login and sign up form</title>
-    
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>NanoNexus — Sign up</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg-1: #0f1724;
+      --bg-2: #1b2a4a;
+      --accent-grad: linear-gradient(90deg,#7c3aed,#06b6d4);
+      --muted: #9aa7c7;
+      --success: #10b981;
+      --danger: #ef4444;
+      --header-bg: #ffffff;
+      --header-text: #0b1220;
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+
+    /* Page background and base */
+    html,body{height:100%;margin:0;background:linear-gradient(180deg,var(--bg-1),var(--bg-2));color:#e6eef8}
+    a{color:inherit}
+
+    /* Header (white) */
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:14px 28px;
+      background:var(--header-bg);
+      color:var(--header-text);
+      box-shadow:0 2px 8px rgba(2,6,23,0.06);
+      position:sticky;
+      top:0;
+      z-index:40;
+    }
+    header .brand h1{
+      margin:0;
+      font-weight:700;
+      color:var(--header-text);
+      font-size:1.25rem;
+    }
+    header nav a{
+      color:var(--header-text);
+      text-decoration:none;
+      margin-left:18px;
+      font-weight:600;
+      opacity:0.9;
+    }
+    .header-actions{display:flex;align-items:center;gap:10px}
+
+    /* Search in header (dark input on white header) */
+    .search-bar{
+      padding:8px 12px;
+      border-radius:10px;
+      border:1px solid rgba(11,18,32,0.06);
+      background:#f3f6f9;
+      color:var(--header-text);
+      min-width:200px;
+      outline:none;
+    }
+    .search-bar::placeholder{color:#7b8796}
+
+    /* Main container */
+    .container{max-width:480px;margin:36px auto;padding:28px}
+    .card{background:rgba(255,255,255,0.03);border-radius:14px;padding:22px}
+    form .field{display:flex;flex-direction:column;margin-bottom:12px}
+    label{font-size:13px;color:#cfe3ff;margin-bottom:8px;font-weight:600}
+    input{padding:12px;border-radius:10px;border:none;background:rgba(255,255,255,0.05);color:#e6eef8}
+    .btn{padding:12px 18px;border-radius:12px;background:var(--accent-grad);border:none;color:white;font-weight:700;cursor:pointer;width:100%}
+    .error{color:var(--danger);font-size:13px;margin-top:6px}
+    .success{color:var(--success);font-size:13px;margin-top:6px}
+    footer{margin-top:36px;padding:18px;text-align:center;color:var(--muted)}
+    footer a{color:var(--muted);text-decoration:none;margin-left:12px}
+
+    /* Small responsive tweaks */
+    @media (max-width:520px){
+      header{padding:12px 14px}
+      .search-bar{min-width:120px}
+      .container{margin:18px 12px}
+    }
+  </style>
 </head>
-<body class="portfolio-page">
+<body>
   <header>
-    <h1>NanoNexus</h1>
+    <div class="brand">
+      <h1>NanoNexus</h1>
+    </div>
+
     <nav>
       <a href="NanoNexus.html">Home</a>
       <a href="Contacts.html">Contact</a>
       <a href="portfolio.html">About us</a>
-      <a href="sign up.html">Sign up</a>
+      <a href="signup.html">Sign up</a>
     </nav>
+
     <div class="header-actions">
-      <input type="search" placeholder="Search for Something?" class="search-bar" />
+      <input class="search-bar" id="headerSearch" type="search" placeholder="Search for Something?" />
     </div>
   </header>
-    <div class="wrapper">
-        <h1>Sign up</h1>
-        <form action="#">
-            <div class="input-field">
-                <ul><p>Email:</p><input type="text" placeholder="Email"></ul>
-                <ul><p>Username:</p><input type="text" placeholder="Username"></ul>
-                <ul><p>Password:</p><input type="password" placeholder="Password"></ul>
-                <ul class="final"><p>Re-Enter Password:</p><input type="password" placeholder="Re-Enter Password"></ul>
-            </div>
-        </form>
 
-        <div class="terms">
-        <input type="checkbox" id="checkbox">
-        <label for="checkbox" class="checkbox">I agree to these<a href="#"> Term & Conditions</a></label>
-        </div> 
-
-        <button>Sign up </button>
-        <div class="member">
-            Already have an account? <a href="login.html">
-                Login Here</a>
+  <main class="container">
+    <div class="card">
+      <h3>Create your account</h3>
+      <form id="signupForm">
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" type="email" required placeholder="you@example.com" />
+          <div id="emailError" class="error" style="display:none"></div>
         </div>
-
-  <footer class="main-footer">
-    <div class="footer-content">
-      <p>&copy; 2026 NanoNexus. All rights reserved.</p>
-      <div class="footer-links">
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms of Service</a>
-      </div>
+        <div class="field">
+          <label for="username">Username</label>
+          <input id="username" type="text" required minlength="3" placeholder="Choose a username" />
+          <div id="usernameError" class="error" style="display:none"></div>
+        </div>
+        <div class="field">
+          <label for="password">Password</label>
+          <input id="password" type="password" required minlength="8" placeholder="Create a password" />
+          <div id="passwordError" class="error" style="display:none"></div>
+        </div>
+        <div class="field">
+          <label for="confirmPassword">Re-Enter Password</label>
+          <input id="confirmPassword" type="password" required placeholder="Repeat your password" />
+          <div id="confirmError" class="error" style="display:none"></div>
+        </div>
+        <div class="terms" style="margin:10px 0;color:var(--muted);font-size:14px">
+          <input id="agree" type="checkbox" />
+          <label for="agree" style="margin-left:8px">I agree to these <a href="#" style="color:#cfe3ff">Terms & Conditions</a></label>
+        </div>
+        <button id="submitBtn" class="btn" type="submit">Sign up</button>
+        <div id="formMessage" style="margin-top:12px"></div>
+        <div class="member" style="margin-top:14px;color:var(--muted)">
+          Already have an account? <a href="#" id="loginLink" style="color:#cfe3ff">Login Here</a>
+        </div>
+      </form>
     </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 NanoNexus. All rights reserved.</p>
+    <a href="#">Privacy Policy</a>
+    <a href="#">Terms of Service</a>
   </footer>
+
+  <script>
+    const form = document.getElementById('signupForm');
+    const email = document.getElementById('email');
+    const username = document.getElementById('username');
+    const password = document.getElementById('password');
+    const confirmPassword = document.getElementById('confirmPassword');
+    const agree = document.getElementById('agree');
+    const emailError = document.getElementById('emailError');
+    const usernameError = document.getElementById('usernameError');
+    const passwordError = document.getElementById('passwordError');
+    const confirmError = document.getElementById('confirmError');
+    const formMessage = document.getElementById('formMessage');
+    const loginLink = document.getElementById('loginLink');
+
+    // Load existing accounts
+    let accounts = JSON.parse(localStorage.getItem('nanonexus_accounts') || '[]');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      emailError.style.display = usernameError.style.display = passwordError.style.display = confirmError.style.display = "none";
+      formMessage.textContent = "";
+
+      let valid = true;
+      if (!email.value.includes("@") || email.value.trim().length < 5) {
+        emailError.textContent = "Invalid email.";
+        emailError.style.display = "block";
+        valid = false;
+      }
+      if (username.value.length < 3) {
+        usernameError.textContent = "Username too short.";
+        usernameError.style.display = "block";
+        valid = false;
+      }
+      if (password.value.length < 8) {
+        passwordError.textContent = "Password must be at least 8 characters.";
+        passwordError.style.display = "block";
+        valid = false;
+      }
+      if (password.value !== confirmPassword.value) {
+        confirmError.textContent = "Passwords do not match.";
+        confirmError.style.display = "block";
+        valid = false;
+      }
+      if (!agree.checked) {
+        formMessage.textContent = "You must agree to the Terms.";
+        formMessage.className = "error";
+        valid = false;
+      }
+      if (!valid) return;
+
+      // Check if username already exists
+      if (accounts.some(acc => acc.username === username.value)) {
+        usernameError.textContent = "Username already taken.";
+        usernameError.style.display = "block";
+        return;
+      }
+
+      // Save account
+      const newAccount = { email: email.value, username: username.value, password: password.value };
+      accounts.push(newAccount);
+      localStorage.setItem('nanonexus_accounts', JSON.stringify(accounts));
+      localStorage.setItem('nanonexus_currentUser', JSON.stringify(newAccount));
+
+      formMessage.textContent = "Account created successfully!";
+      formMessage.className = "success";
+
+      // Redirect to homepage after short delay
+      setTimeout(() => {
+        window.location.href = "NanoNexus.html";
+      }, 900);
+    });
+
+    // Login link: simulate login with first account
+    loginLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (accounts.length === 0) {
+        alert("No accounts found. Please sign up first.");
+        return;
+      }
+      localStorage.setItem('nanonexus_currentUser', JSON.stringify(accounts[0]));
+      window.location.href = "NanoNexus.html";
+    });
+
+    // Optional: wire header search to homepage search (if you implement search there)
+    const headerSearch = document.getElementById('headerSearch');
+    headerSearch.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        // store query and navigate to homepage where search can read it from localStorage or query string
+        localStorage.setItem('nanonexus_searchQuery', headerSearch.value.trim());
+        window.location.href = 'NanoNexus.html';
+      }
+    });
+  </script>
 </body>
 </html>

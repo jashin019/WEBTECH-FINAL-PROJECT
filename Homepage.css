@@ -45,6 +45,7 @@ nav a {
 nav a:hover {
     color: #666666;
     cursor: pointer;
+   
 }
 
 .search-bar {
@@ -96,8 +97,9 @@ nav a:hover {
 .footer-content p {
     margin: 0;
     font-size: 0.9rem;
-    align-self:center;
+    align-content:center;
 }
+
 .footer-nav{ /*format for the navigation*/
     display:flex;
     flex-direction: column;
@@ -105,8 +107,17 @@ nav a:hover {
 
 .footer-nav nav a{/*color*/
     color: white;
-    
 }
+
+.members_socials{
+    display:flex;
+    flex-direction: column;
+}
+
+.members_socials nav a{
+    color: white;
+}
+
 .footer-links {
     display: flex;
     gap: 20px;
@@ -119,9 +130,11 @@ nav a:hover {
     transition: color 0.3s;
 }
 
-.footer-links a:hover {
-    color: #38bdf8;
+.main-footer a:hover {
+    color: #00b3ff;
+    text-decoration: underline !important;
 }
+
 
 
 

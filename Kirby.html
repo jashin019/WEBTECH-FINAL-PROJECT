@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Kirby — Portfolio</title>
+  <link rel="stylesheet" href="portfolio.css">
+  <link rel="stylesheet" href="kirby.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1 class="brand"><a href="NanoNexus.html">NanoNexus</a></h1>
+      <nav class="nav">
+        <a href="NanoNexus.html">Home</a>
+        <a href="Contacts.html">Contact</a>
+        <a href="portfolio.html">About us</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container page-card">
+    <section class="profile-card">
+      <div class="profile-left">
+        <img id="kirbyAvatar" class="avatar" src="assets/images/kirby.jpg" alt="John Kirby Tolentino">
+      </div>
+
+      <div class="profile-right">
+        <h2 class="name">John Kirby S. Tolentino</h2>
+        <p class="role">Helper member</p>
+        <p class="bio">I am an ordinary person with a normal background normal talent and normal life</p>
+
+        <div class="meta-row">
+          <div><strong>Location</strong><div class="muted">Calmay, Philippines</div></div>
+          <div><strong>Email</strong><div class="muted"><a href="mailto:kirby@example.com">johnkirbytolenti171@gmail.com</a></div></div>
+        </div>
+
+        <h4>Skills</h4>
+        <div class="skills">
+          <span class="skill">Database Management</span>
+          <span class="skill">API Design</span>
+          <span class="skill">Security</span>
+          <span class="skill">Node.js</span>
+        </div>
+
+        <div class="actions">
+          <a class="btn primary" href="NanoNexus.html">Back to Store</a>
+          <a class="btn outline" id="viewResume" href="#" target="_blank">Download Resume</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="projects">
+      <h3>Selected Contributions</h3>
+
+      <article class="project">
+        <h4>NanoNexus Store Backend</h4>
+        <p class="muted">Design and implementation of product APIs, cart persistence, and order handling.</p>
+        <ul>
+          <li>API endpoints for products, cart, and orders</li>
+          <li>LocalStorage fallback for offline cart</li>
+          <li>Order persistence (placeholder for server integration)</li>
+        </ul>
+      </article>
+
+      <article class="project">
+        <h4>Monitoring & Security</h4>
+        <p class="muted">Introduced logging and basic rate-limiting patterns for public endpoints.</p>
+      </article>
+    </section>
+
+    <section class="contact-card">
+      <h3>Contact</h3>
+      <p class="muted">Reach out for collaboration or contract work.</p>
+      <div class="contact-links">
+        <a class="link" href="https://github.com/kirby270" target="_blank">GitHub</a>
+        <a class="link" href="https://www.linkedin.com/in/" target="_blank">LinkedIn</a>
+        <a class="link" href="NanoNexus.html">Back to Store</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">&copy; 2026 NanoNexus. All rights reserved.</div>
+  </footer>
+
+  <script src="kirby.js"></script>
+</body>
+</html>

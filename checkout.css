@@ -1,0 +1,19 @@
+/* checkout.css */
+body{font-family:Inter,system-ui,Arial;background:#f7f8fb;margin:0;color:#111}
+.container{max-width:980px;margin:0 auto;padding:20px}
+.checkout-wrap{background:#fff;padding:20px;border-radius:10px;box-shadow:0 6px 18px rgba(16,24,40,0.06)}
+.order-list{margin-bottom:12px}
+.order-item{display:flex;gap:12px;padding:10px 0;border-bottom:1px solid #eee;align-items:center}
+.order-item img{width:84px;height:64px;object-fit:cover;border-radius:8px}
+.order-meta{flex:1}
+.order-controls{display:flex;align-items:center;gap:8px}
+.totals{font-weight:700;text-align:right;margin-top:12px}
+.form-grid{display:grid;grid-template-columns:1fr;gap:10px;margin-top:12px}
+@media(min-width:720px){.form-grid{grid-template-columns:1fr 1fr}}
+.checkout-form input, .checkout-form select{padding:10px;border:1px solid #e6e9ef;border-radius:8px}
+.form-actions{display:flex;gap:12px;justify-content:flex-end;margin-top:12px}
+.btn{padding:8px 12px;border-radius:8px;text-decoration:none;border:none;cursor:pointer}
+.btn.primary{background:#0d6efd;color:#fff}
+.btn.outline{background:transparent;border:1px solid #dbe7ff;color:#0d6efd}
+.msg{margin-top:12px;color:#111}
+.empty{padding:40px;text-align:center;color:#666}

@@ -1,4 +1,8 @@
 
+/* team.js
+   Team grid + modal logic. Clicking member with id === 3 navigates to Kirby.html
+*/
+
 const teamMembers = [
     {
         id: 1,
@@ -92,20 +96,16 @@ const teamMembers = [
     }
 ];
 
-
-
 document.addEventListener("DOMContentLoaded", () => {
     const teamGrid = document.getElementById("teamGrid");
     const modalOverlay = document.getElementById("memberModal");
     const modalBody = document.getElementById("modalBody");
     const closeModalBtn = document.getElementById("closeModal");
 
-
     function renderTeam() {
         teamMembers.forEach((member, index) => {
             const card = document.createElement("div");
             card.className = "member-card";
-
             card.style.transitionDelay = `${index * 100}ms`;
 
             card.innerHTML = `
@@ -116,16 +116,20 @@ document.addEventListener("DOMContentLoaded", () => {
                 <button class="view-more-btn">View Profile</button>
             `;
 
-
-            card.addEventListener("click", () => openModal(member));
+            // If this is John Kirby (id === 3) navigate to Kirby.html on click
+            if (member.id === 3) {
+                card.addEventListener("click", () => {
+                    window.location.href = 'Kirby.html';
+                });
+            } else {
+                card.addEventListener("click", () => openModal(member));
+            }
 
             teamGrid.appendChild(card);
         });
     }
 
-
     function openModal(member) {
-
         let skillsHtml = '';
         member.skills.forEach(skill => {
             skillsHtml += `
@@ -140,7 +144,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>
             `;
         });
-
 
         modalBody.innerHTML = `
             <div class="modal-left">
@@ -162,9 +165,7 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
         `;
 
-
         modalOverlay.classList.add("active");
-
 
         setTimeout(() => {
             const skillFills = modalBody.querySelectorAll('.skill-fill');
@@ -174,10 +175,8 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 100);
     }
 
-
     function closeModal() {
         modalOverlay.classList.remove("active");
-
         setTimeout(() => {
             const skillFills = modalBody.querySelectorAll('.skill-fill');
             skillFills.forEach(fill => {
@@ -188,12 +187,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     closeModalBtn.addEventListener("click", closeModal);
     modalOverlay.addEventListener("click", (e) => {
-
-        if (e.target === modalOverlay) {
-            closeModal();
-        }
+        if (e.target === modalOverlay) closeModal();
     });
-
 
     function setupScrollAnimations() {
         const observer = new IntersectionObserver((entries) => {
@@ -203,16 +198,12 @@ document.addEventListener("DOMContentLoaded", () => {
                     observer.unobserve(entry.target);
                 }
             });
-        }, {
-            threshold: 0.1
-        });
+        }, { threshold: 0.1 });
 
         const cards = document.querySelectorAll('.member-card');
         cards.forEach(card => observer.observe(card));
     }
 
-
     renderTeam();
-
     setTimeout(setupScrollAnimations, 100);
 });

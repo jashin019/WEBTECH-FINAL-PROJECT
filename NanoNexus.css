@@ -314,3 +314,15 @@ body {
   border-radius: 8px;
   z-index: 9999;
 }
+
+/* Cart detail and spec list */
+.detail-top{display:flex;gap:16px}
+.detail-top img{width:160px;height:120px;object-fit:cover;border-radius:8px}
+.detail-meta .price{color:var(--accent);font-size:18px}
+.spec-list{list-style:disc;margin-left:18px;color:#333}
+.cart-item{display:flex;gap:12px;align-items:center;padding:10px 0;border-bottom:1px solid #eee}
+.cart-item img{width:72px;height:56px;object-fit:cover;border-radius:6px}
+.cart-props{color:#666;font-size:13px;margin-top:6px}
+.qty-controls button{padding:6px 8px;border-radius:6px;border:1px solid #ddd;background:#fff;cursor:pointer}
+.checkout-btn{background:#0d6efd;color:#fff;padding:8px 12px;border-radius:6px;border:none}
+.checkout-link{display:inline-block;margin-left:8px;padding:6px 10px;background:#e9f2ff;border-radius:6px;color:#0d6efd;text-decoration:none}

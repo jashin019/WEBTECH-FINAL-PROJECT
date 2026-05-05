@@ -1,0 +1,35 @@
+/* kirby.css - lightweight, self-contained styles for Kirby.html */
+:root{--bg:#f6f8fb;--card:#fff;--accent:#0d6efd;--muted:#6b7280}
+*{box-sizing:border-box}
+body{font-family:Inter,system-ui,Arial,sans-serif;background:var(--bg);margin:0;color:#111}
+.container{max-width:980px;margin:0 auto;padding:20px}
+.site-header{background:#fff;border-bottom:1px solid #e6e9ef}
+.site-header .container{display:flex;align-items:center;justify-content:space-between;padding:12px 20px}
+.brand a{color:#111;text-decoration:none;font-weight:700}
+.nav a{margin-left:14px;color:#333;text-decoration:none}
+.page-card{margin-top:28px}
+.profile-card{display:flex;gap:24px;background:var(--card);padding:22px;border-radius:12px;box-shadow:0 6px 18px rgba(16,24,40,0.06);align-items:center}
+.profile-left{flex:0 0 160px;text-align:center}
+.avatar{width:140px;height:140px;border-radius:50%;object-fit:cover;border:4px solid var(--accent);cursor:pointer}
+.profile-right{flex:1}
+.name{margin:0;font-size:22px}
+.role{color:var(--muted);margin:6px 0}
+.bio{margin:12px 0;color:#333}
+.meta-row{display:flex;gap:24px;margin:12px 0;color:var(--muted)}
+.skills{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+.skill{background:#eef5ff;color:var(--accent);padding:6px 10px;border-radius:999px;font-weight:600;font-size:13px}
+.actions{margin-top:12px}
+.btn{display:inline-block;padding:8px 12px;border-radius:8px;text-decoration:none}
+.btn.primary{background:var(--accent);color:#fff}
+.btn.outline{border:1px solid #dbe7ff;color:var(--accent);background:transparent}
+.projects{margin-top:20px}
+.project{background:#fff;padding:14px;border-radius:10px;margin-bottom:10px;border:1px solid #eef2f7}
+.project h4{margin:0 0 6px 0}
+.muted{color:var(--muted)}
+.contact-card{margin-top:18px;background:#fff;padding:14px;border-radius:10px;border:1px solid #eef2f7}
+.contact-links .link{margin-right:12px;color:var(--accent);text-decoration:none}
+.site-footer{margin-top:28px;padding:18px 0;text-align:center;color:var(--muted)}
+@media (max-width:720px){
+  .profile-card{flex-direction:column;align-items:flex-start}
+  .profile-left{text-align:left}
+}

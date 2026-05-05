@@ -1,348 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>NanoNexus — Computer Parts & Tech Accessories</title>
-  <link rel="stylesheet" href="Homepage.css">
-  <link rel="stylesheet" href="portfolio.css">
-  <link rel="stylesheet" href="NanoNexus.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>NanoNexus — Tech Accessories</title>
+  <link rel="stylesheet" href="Homepage.css"><link rel="stylesheet" href="portfolio.css"><link rel="stylesheet" href="NanoNexus.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
-
 <body class="portfolio-page">
   <header>
     <h1 style="color:black">NanoNexus</h1>
-    <nav>
-      <a href="NanoNexus.html">Home</a>
-      <a href="Contacts.html">Contact</a>
-      <a href="portfolio.html">About us</a>
-      <a href="sign up.html">Sign up</a>
-    </nav>
+    <nav><a href="NanoNexus.html">Home</a><a href="Contacts.html">Contact</a><a href="portfolio.html">About us</a><a href="sign up.html">Sign up</a></nav>
     <div class="header-actions">
-      <input type="search" placeholder="Search for computer parts or accessories..." class="search-bar"
-        id="searchInput" />
-      <button id="cartBtn" class="cart-btn" aria-label="Open cart">
-        🛒 <span id="cartCount" class="cart-count">0</span>
-      </button>
+      <input type="search" placeholder="Search..." class="search-bar" id="sh">
+      <button id="cb" class="cart-btn"> <span id="cc">0</span></button>
     </div>
   </header>
-  <br>
 
-  <div class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000" id="demo">
-    <div id="carouselExample" class="carousel slide"
-     data-bs-ride="carousel"
-     data-bs-interval="3000"
-     data-bs-pause="hover">
-    <div class="row justify-content-center">
-      <div class="col-md-8">
-        <div class="carousel-indicators">
-          <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
-          <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
-          <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
-        </div>
-
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img src="assets/images/17.jpg" alt="AORUS GeForce RTX™ 5090 MASTER 32G" class="d-block w-100">
-          </div>
-          <div class="carousel-item">
-            <img src="assets/images/22.jpg" alt="NVIDIA BlackWell GPU Cloud" class="d-block w-100">
-          </div>
-          <div class="carousel-item">
-            <img src="assets/images/19.jpg" alt="FrostFlow x280mm liquid CPU cooler" class="d-block w-100">
-          </div>
-        </div>
-
-        <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon"></span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
-          <span class="carousel-control-next-icon"></span>
-        </button>
-      </div>
+  <div class="carousel slide my-3" data-bs-ride="carousel" id="demo">
+    <div class="carousel-indicators">
+      <button data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+      <button data-bs-target="#demo" data-bs-slide-to="1"></button>
+      <button data-bs-target="#demo" data-bs-slide-to="2"></button>
     </div>
+    <div class="carousel-inner container col-md-8">
+      <div class="carousel-item active"><img src="assets/images/17.jpg" class="d-block w-100"></div>
+      <div class="carousel-item"><img src="assets/images/22.jpg" class="d-block w-100"></div>
+      <div class="carousel-item"><img src="assets/images/19.jpg" class="d-block w-100"></div>
     </div>
+    <button class="carousel-control-prev" data-bs-target="#demo" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span></button>
+    <button class="carousel-control-next" data-bs-target="#demo" data-bs-slide="next"><span class="carousel-control-next-icon"></span></button>
   </div>
-  <br>
-  <br>
+
   <main>
-    <section class="hero">
-      <h2>Featured Computer Parts & Tech Accessories</h2>
-      <p>Motherboards, GPUs, peripherals, and accessories for every build.</p>
-    </section>
-
-    <section id="products" class="product-grid" aria-live="polite">
-
-    </section>
+    <section class="hero"><h2>Featured Computer Parts</h2><p>Motherboards, GPUs, and peripherals for every build.</p></section>
+    <section id="ps" class="product-grid" aria-live="polite"></section>
   </main>
 
-
-  <div id="cartModal" class="cart-modal" aria-hidden="true">
-    <div class="cart-panel" role="dialog" aria-label="Shopping cart">
-      <button id="closeCart" class="close-cart" aria-label="Close cart">✕</button>
-      <h3>Your Cart</h3>
-      <div id="cartItems" class="cart-items"></div>
-      <div class="cart-footer">
-        <div class="cart-total">Total: ₱<span id="cartTotal">0.00</span></div>
-        <button id="checkoutBtn" class="checkout-btn">Checkout</button>
-      </div>
-    </div>
-    <div class="cart-backdrop" id="cartBackdrop"></div>
+  <div id="cm" class="cart-modal" aria-hidden="true">
+    <div class="cart-panel">
+      <button id="clc" class="close-cart">✕</button><h3>Your Cart</h3>
+      <div id="ci" class="cart-items"></div>
+      <div class="cart-footer"><div>Total: ₱<span id="ct">0.00</span></div><button id="chk" class="checkout-btn">Checkout</button></div>
+    </div><div class="cart-backdrop"></div>
   </div>
 
-
-  <div id="detailModal" class="detail-modal" aria-hidden="true">
-    <div class="detail-panel" role="dialog" aria-label="Product details">
-      <button id="closeDetail" class="close-detail" aria-label="Close details">✕</button>
-      <div id="detailContent" class="detail-content">
-
-      </div>
-    </div>
-    <div class="detail-backdrop" id="detailBackdrop"></div>
+  <div id="dm" class="detail-modal" aria-hidden="true">
+    <div class="detail-panel"><button id="cld" class="close-detail">✕</button><div id="dc" class="detail-content"></div></div>
+    <div class="detail-backdrop"></div>
   </div>
 
-  <footer class="main-footer">
-    <div class="footer-content">
-      <p>&copy; 2026 NanoNexus. All rights reserved.</p>
-      <div class="footer-links">
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms of Service</a>
-      </div>
-    </div>
-  </footer>
+  <footer class="main-footer"><p>&copy; 2026 NanoNexus. <a href="#">Privacy</a> | <a href="#">Terms</a></p></footer>
 
-  <script>
-
-    const productsContainer = document.getElementById('products');
-    const cartCountEl = document.getElementById('cartCount');
-    const cartBtn = document.getElementById('cartBtn');
-    const cartModal = document.getElementById('cartModal');
-    const cartItemsEl = document.getElementById('cartItems');
-    const cartTotalEl = document.getElementById('cartTotal');
-    const closeCart = document.getElementById('closeCart');
-    const cartBackdrop = document.getElementById('cartBackdrop');
-
-    const detailModal = document.getElementById('detailModal');
-    const detailContent = document.getElementById('detailContent');
-    const closeDetail = document.getElementById('closeDetail');
-    const detailBackdrop = document.getElementById('detailBackdrop');
-
-    const searchInput = document.getElementById('searchInput');
-
-
-    let products = [
-      { "id": "p1", "name": "RGB Mechanical Keyboard", "price": 3499.00, "image": "assets/images/1.png", "description": "Tactile switches, full RGB, detachable wrist rest." },
-      { "id": "p2", "name": "T-Force Delta RAM 16GB", "price": 2199.00, "image": "assets/images/2.png", "description": "High-speed DDR4 RGB memory module." },
-      { "id": "p3", "name": "Gigabyte X870 Motherboard", "price": 8999.00, "image": "assets/images/3.png", "description": "AM5 socket, PCIe 5.0, WiFi 6E." },
-      { "id": "p4", "name": "Wireless RGB Headset", "price": 2599.00, "image": "assets/images/4.jpg", "description": "Surround sound, noise-cancelling mic." },
-      { "id": "p5", "name": "Gaming Mouse", "price": 1299.00, "image": "assets/images/5.png", "description": "High-DPI sensor, programmable buttons." },
-      { "id": "p6", "name": "JBL Speakers", "price": 1999.00, "image": "assets/images/9.jpg", "description": "Compact stereo speakers with rich bass." },
-      { "id": "p7", "name": "Ergonomic Gaming Chair", "price": 7999.00, "image": "assets/images/6.png", "description": "Adjustable lumbar support and recline." },
-      { "id": "p8", "name": "RTX 4060 GPU", "price": 24999.00, "image": "assets/images/10.jpg", "description": "Ray tracing, DLSS support." },
-      { "id": "p9", "name": "High-Performance Laptop", "price": 59999.00, "image": "assets/images/8.jpg", "description": "Portable workstation for gaming and content creation." },
-      { "id": "p10", "name": "GEFORCE RTX 4060", "price": 58999.00, "image": "assets/images/7.png", "description": "Portable." },
-      { "id": "p11", "name": "Corsair RMx SERIES", "price": 3000.00, "image": "assets/images/11.png", "description": "Power supply." },
-      { "id": "p12", "name": "Controller", "price": 3000.00, "image": "assets/images/13.jpg", "description": "Controller for Playstation" }
-
-    ];
-
-
-    let cart = JSON.parse(localStorage.getItem('nanonexus_cart') || '{}');
-
-
-    function updateCartCount() {
-      const count = Object.values(cart).reduce((s, item) => s + item.qty, 0);
-      cartCountEl.textContent = count;
-    }
-
-
-    function renderProducts(list) {
-      productsContainer.innerHTML = '';
-      list.forEach(p => {
-        const card = document.createElement('article');
-        card.className = 'product-card';
-        card.innerHTML = `
-          <img class="product-image" src="${p.image}" alt="${p.name}" />
-          <div class="product-name">${p.name}</div>
-          <div class="product-price">₱${p.price.toFixed(2)}</div>
-          <div class="card-actions">
-            <button class="add-btn" data-id="${p.id}">Add to Cart</button>
-            <button class="view-btn" data-id="${p.id}">View</button>
-          </div>
-        `;
-        productsContainer.appendChild(card);
-      });
-
-
-      document.querySelectorAll('.add-btn').forEach(btn => {
-        btn.addEventListener('click', () => addToCart(btn.dataset.id));
-      });
-
-
-      document.querySelectorAll('.view-btn').forEach(btn => {
-        btn.addEventListener('click', () => openProductDetail(btn.dataset.id));
-      });
-    }
-
-
-    function addToCart(id) {
-      const product = products.find(p => p.id === id);
-      if (!product) return;
-      if (!cart[id]) cart[id] = { id: product.id, name: product.name, price: product.price, image: product.image, qty: 0 };
-      cart[id].qty += 1;
-      localStorage.setItem('nanonexus_cart', JSON.stringify(cart));
-      updateCartCount();
-      showToast(`${product.name} added to cart`);
-    }
-
-
-    function showToast(msg) {
-      const t = document.createElement('div');
-      t.className = 'toast';
-      t.textContent = msg;
-      document.body.appendChild(t);
-      setTimeout(() => t.remove(), 1600);
-    }
-
-
-    function renderCart() {
-      cartItemsEl.innerHTML = '';
-      const entries = Object.values(cart);
-      if (entries.length === 0) {
-        cartItemsEl.innerHTML = '<p style="color:var(--muted)">Your cart is empty.</p>';
-        cartTotalEl.textContent = '0.00';
-        return;
-      }
-      let total = 0;
-      entries.forEach(item => {
-        total += item.price * item.qty;
-        const div = document.createElement('div');
-        div.className = 'cart-item';
-        div.innerHTML = `
-          <img src="${item.image}" alt="${item.name}" />
-          <div class="meta">
-            <div style="font-weight:700">${item.name}</div>
-            <div style="color:var(--muted)">₱${item.price.toFixed(2)} each</div>
-          </div>
-          <div>
-            <div class="qty-controls">
-              <button class="dec" data-id="${item.id}">-</button>
-              <div style="padding:4px 8px">${item.qty}</div>
-              <button class="inc" data-id="${item.id}">+</button>
-            </div>
-          </div>
-        `;
-        cartItemsEl.appendChild(div);
-      });
-
-
-      cartItemsEl.querySelectorAll('.inc').forEach(b => b.addEventListener('click', () => changeQty(b.dataset.id, 1)));
-      cartItemsEl.querySelectorAll('.dec').forEach(b => b.addEventListener('click', () => changeQty(b.dataset.id, -1)));
-
-      cartTotalEl.textContent = total.toFixed(2);
-    }
-
-
-    function changeQty(id, delta) {
-      if (!cart[id]) return;
-      cart[id].qty += delta;
-      if (cart[id].qty <= 0) delete cart[id];
-      localStorage.setItem('nanonexus_cart', JSON.stringify(cart));
-      renderCart();
-      updateCartCount();
-    }
-
-
-    cartBtn.addEventListener('click', () => {
-      cartModal.setAttribute('aria-hidden', 'false');
-      renderCart();
-    });
-    closeCart.addEventListener('click', () => cartModal.setAttribute('aria-hidden', 'true'));
-    cartBackdrop.addEventListener('click', () => cartModal.setAttribute('aria-hidden', 'true'));
-
-
-    function openProductDetail(id) {
-      const p = products.find(x => x.id === id);
-      if (!p) return;
-      detailContent.innerHTML = `
-        <img src="${p.image}" alt="${p.name}" />
-        <div class="detail-meta">
-          <h4>${p.name}</h4>
-          <div style="color:var(--accent); font-weight:800">₱${p.price.toFixed(2)}</div>
-          <p>${p.description ? p.description : 'High quality product.'}</p>
-          <div style="margin-top:10px">
-            <button class="add-btn" data-id="${p.id}">Add to Cart</button>
-            <button class="view-link" id="openFullPage" style="margin-left:8px; padding:8px 12px; border-radius:8px; border:1px solid rgba(255,255,255,0.04); background:transparent; color:var(--muted); cursor:pointer;">Open Page</button>
-          </div>
-        </div>
-      `;
-
-      detailContent.querySelector('.add-btn').addEventListener('click', () => {
-        addToCart(p.id);
-        closeProductDetail();
-      });
-
-      const openFullPage = document.getElementById('openFullPage');
-      openFullPage.addEventListener('click', () => {
-
-        alert(`${p.name}\n\nPrice: ₱${p.price.toFixed(2)}\n\n${p.description}`);
-      });
-
-      detailModal.setAttribute('aria-hidden', 'false');
-    }
-
-    function closeProductDetail() {
-      detailModal.setAttribute('aria-hidden', 'true');
-    }
-
-    closeDetail.addEventListener('click', closeProductDetail);
-    detailBackdrop.addEventListener('click', closeProductDetail);
-
-
-    if (searchInput) {
-      searchInput.addEventListener('input', (e) => {
-        const q = e.target.value.trim().toLowerCase();
-        if (!q) {
-          renderProducts(products);
-          return;
-        }
-        const filtered = products.filter(p =>
-          p.name.toLowerCase().includes(q) ||
-          (p.description && p.description.toLowerCase().includes(q))
-        );
-        renderProducts(filtered);
-      });
-    }
-
-
-    document.getElementById('checkoutBtn').addEventListener('click', () => {
-      const entries = Object.values(cart);
-      if (entries.length === 0) {
-        showToast('Cart is empty');
-        return;
-      }
-
-      let summary = 'Order summary:\\n';
-      let total = 0;
-      entries.forEach(it => { summary += `${it.name} x${it.qty} - ₱${(it.price * it.qty).toFixed(2)}\\n`; total += it.price * it.qty; });
-      summary += `\\nTotal: ₱${total.toFixed(2)}`;
-      if (confirm(summary + '\\n\\nPlace order (demo)?')) {
-        cart = {};
-        localStorage.removeItem('nanonexus_cart');
-        updateCartCount();
-        renderCart();
-        cartModal.setAttribute('aria-hidden', 'true');
-        showToast('Order placed (demo).');
-      }
-    });
-
-
-    renderProducts(products);
-    updateCartCount();
-  </script>
-</body>
-
-</html>
+<script src="nanonexus.js"></script>

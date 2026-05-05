@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Checkout — NanoNexus</title>
+  <link rel="stylesheet" href="NanoNexus.css">
+  <link rel="stylesheet" href="checkout.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1 class="brand"><a href="NanoNexus.html">NanoNexus</a></h1>
+      <nav class="nav"><a href="NanoNexus.html">Home</a><a href="portfolio.html">About</a></nav>
+    </div>
+  </header>
+
+  <main class="container checkout-wrap">
+    <h2>Checkout</h2>
+    <div id="order" class="order-list"></div>
+
+    <div class="totals">
+      <div>Subtotal: ₱<span id="subtotal">0.00</span></div>
+    </div>
+
+    <form id="checkoutForm" class="checkout-form" onsubmit="return false;">
+      <div class="form-grid">
+        <input id="name" placeholder="Full name" required>
+        <input id="phone" placeholder="Phone number" required>
+        <input id="address" placeholder="Shipping address" required>
+      </div>
+
+      <div class="payment-row">
+        <label for="pay">Payment</label>
+        <select id="pay">
+          <option value="cod">Cash on Delivery</option>
+          <option value="gcash">GCash / e-wallet</option>
+          <option value="card">Card (test)</option>
+        </select>
+      </div>
+
+      <div class="form-actions">
+        <button id="back" class="btn outline" onclick="history.back()">Back</button>
+        <button id="place" class="btn primary">Place order</button>
+      </div>
+
+      <div id="msg" class="msg"></div>
+    </form>
+  </main>
+
+  <footer class="site-footer"><div class="container">&copy; 2026 NanoNexus</div></footer>
+
+  <script src="checkout.js"></script>
+</body>
+</html>

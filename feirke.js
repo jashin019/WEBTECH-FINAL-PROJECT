@@ -1,20 +1,28 @@
-// Change greeting based on time of day
-const greeting = document.getElementById('greeting');
-const hour = new Date().getHours();
+document.getElementById('contact-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    alert('Thank you for your message! This is a demo template.');
+    this.reset();
+});
 
-if (hour < 12) {
-    greeting.textContent = "Good Morning!";
-} else if (hour < 18) {
-    greeting.textContent = "Good Afternoon!";
-} else {
-    greeting.textContent = "Good Evening!";
-}
+// Subtle fade-in effect on scroll
+const sections = document.querySelectorAll('.section');
 
-// Simple smooth scroll for navigation links
-document.querySelectorAll('nav a').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const section = document.querySelector(this.getAttribute('href'));
-        section.scrollIntoView({ behavior: 'smooth' });
+const observerOptions = {
+    threshold: 0.1
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+        }
     });
+}, observerOptions);
+
+sections.forEach(section => {
+    section.style.opacity = '0';
+    section.style.transform = 'translateY(20px)';
+    section.style.transition = 'all 0.6s ease-out';
+    observer.observe(section);
 });

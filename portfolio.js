@@ -117,9 +117,14 @@ document.addEventListener("DOMContentLoaded", () => {
             `;
 
             // If this is John Kirby (id === 3) navigate to Kirby.html on click
+            // If this is Justin Baysa (id === 1) navigate to justin.html on click
             if (member.id === 3) {
                 card.addEventListener("click", () => {
                     window.location.href = 'Kirby.html';
+                });
+            } else if (member.id === 1) {
+                card.addEventListener("click", () => {
+                    window.location.href = 'justin.html';
                 });
             } else {
                 card.addEventListener("click", () => openModal(member));

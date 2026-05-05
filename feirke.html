@@ -3,35 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
+    <title>Designer Portfolio</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
+
     <nav>
-        <div class="logo">PORTFOLIO</div>
-        <ul>
-            <li><a href="#home">Home</a></li>
+        <div class="logo">CREATIVE.</div>
+        <ul class="nav-links">
             <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
 
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <img src="profile.jpg.jpg" alt="Profile Picture" class="profile-jpg">
-            <h1 id="greeting">Good Day!</h1>
-            <p>Aspiring Developer | Fitness Enthusiast | Creator</p>
-            <a href="#about" class="btn">More Information</a>
+    <header class="hero">
+        <div class="hero-image">
+            <!-- Using the provided image file -->
+            <img src="profile.jpg.jpg" alt="profile-jpg">
         </div>
-    </section>
+        <div class="hero-text">
+            <h1>Creative Designer</h1>
+            <p>Building clean, minimal digital experiences.</p>
+        </div>
+    </header>
 
-    <section id="about" class="content-section">
-        <h2>About Me</h2>
-        <p>I  have a pysical avoidant and also i am a passionate individual dedicated to self-improvement, whether it's through coding or at the gym. I believe in hard work and consistent growth.</p>
-    </section>
+    <main>
+        <section id="about" class="section">
+            <h2>About Me</h2>
+            <p>I am a designer focused on the intersection of simplicity and functionality. I believe that great design isn't just how it looks, but how it works for the person using it.</p>
+        </section>
+
+        <section id="skills" class="section">
+            <h2>Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-item">UI/UX Design</div>
+                <div class="skill-item">Visual Identity</div>
+                <div class="skill-item">HTML/CSS/JS</div>
+                <div class="skill-item">Creative Direction</div>
+            </div>
+        </section>
+
+        <section id="contact" class="section">
+            <h2>Get In Touch</h2>
+            <form id="contact-form">
+                <input type="text" placeholder="Name" required>
+                <input type="email" placeholder="Email" required>
+                <textarea placeholder="Message" rows="5" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </section>
+    </main>
 
     <footer>
-        <p>&copy; 2026 Personal Portfolio</p>
+        <p>&copy; 2026 Creative Portfolio</p>
     </footer>
 
     <script src="script.js"></script>

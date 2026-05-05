@@ -20,7 +20,6 @@ body {
     scroll-behavior: smooth;
 }
 
-/* Navigation */
 nav {
     display: flex;
     justify-content: space-between;
@@ -54,7 +53,7 @@ nav {
     color: var(--text-secondary);
 }
 
-/* Hero */
+
 .hero {
     display: flex;
     flex-direction: column;
@@ -84,7 +83,7 @@ nav {
     margin-bottom: 0.5rem;
 }
 
-/* Sections */
+
 .section {
     padding: 6rem 10%;
     max-width: 800px;
@@ -111,7 +110,7 @@ h2 {
     font-size: 1.1rem;
 }
 
-/* Contact Form */
+
 form {
     display: flex;
     flex-direction: column;

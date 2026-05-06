@@ -122,6 +122,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 card.addEventListener("click", () => {
                     window.location.href = 'Kirby.html';
                 });
+            } else if( member.id === 2){
+                card.addEventListener("click", () =>{
+                    window.location.href = "Clarence.html";
+                });
+            }
             } else if (member.id === 1) {
                 card.addEventListener("click", () => {
                     window.location.href = 'justin.html';

@@ -190,3 +190,9 @@ header {
   border-radius: 999px;
   font-size: 0.85rem;
 }
+/* checkout.css additions */
+.field-help{font-size:13px;color:#6b7280;margin-top:6px}
+.field-error{color:#b00020;background:#fff0f2;padding:8px;border-radius:6px;margin-top:8px;border:1px solid #f5c6d0}
+input[aria-invalid="true"]{outline:2px solid rgba(176,0,32,0.12)}
+.btn.primary[disabled]{opacity:0.55;cursor:not-allowed}
+.muted{color:#6b7280}
